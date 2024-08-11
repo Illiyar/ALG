@@ -1,0 +1,27 @@
+﻿<div class="container-fluid full-screen-card">
+    <div class="card">
+        <img src="src/img/image2.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Ошибки в триггере</h5>
+            <p class="card-text">
+                1. Переменная @@VARIABLE должна быть объявлена и инициализирована внутри блока BEGIN...END</br>
+                2. UPDATE не может быть выполнен напрямую с переменной, если используется множество строк.</br>
+                3. Ошибки в кодировке HTML (&amp;#39;): Должны использоваться обычные одиночные кавычки (')</br>
+            </p>
+        </div>
+    </div>
+    <h3>Исправленный код триггера:</h3>
+    <p>
+        CREATE TRIGGER dbo.MY_TRIGGER </br>
+        ON dbo.MY_TABLE</br>
+        AFTER INSERT</br>
+        AS</br>
+        BEGIN</br>
+        UPDATE dbo.MY_TABLE_2</br>
+        SET field2 = 'OK'</br>
+        WHERE id IN (SELECT field1 FROM INSERTED);</br>
+        END;</br>
+        GO</br>
+    </p>
+    <h2>P.S. Я не сталкивался с триггерами, но разобраться для чего и как это работает могу</h2>
+</div>

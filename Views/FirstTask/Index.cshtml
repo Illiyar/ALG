@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ALG.Models.Country>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Количество Городов</th>
+            <th scope="col">Количестов людей</th>
+            <th scope="col">Кнопка детальнее</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int counter = 1;} 
+        @foreach (var coutry in Model)
+            {
+            <tr>
+                <th scope="row">@(counter++)</th>
+                <td>@coutry.CoutryName</td>
+                <td>@coutry.Cities.Count()</td>
+                @{
+                    int peopleCount = 0;
+                    foreach (var city in coutry.Cities)
+                    {
+
+                        peopleCount += @city.PeopleCount;
+                    }
+                }
+
+                <td>@peopleCount</td>
+                <td><form method="get" asp-action="Details">
+                    <input asp-for="@coutry.Id" name="Id" hidden/>
+                        <button type="submit" class="btn btn-primary">Детальнее</button>
+                    </form></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<div class="container-fluid full-screen-card">
+    <div class="card">
+        <img src="src/img/image1.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Пример выполнение на SQL</h5>
+            <p class="card-text">
+                SELECT
+                c.CoutryName AS CoutryName,
+                COUNT(ci.Id) AS CityCount,
+                SUM(ci.PeopleCount) AS TotalPopulation
+                FROM
+                Countries c
+                LEFT JOIN
+                Cities ci ON c.Id = ci.CountryId
+                GROUP BY
+                c.CoutryName;
+
+            </p>
+        </div>
+    </div>
+</div>

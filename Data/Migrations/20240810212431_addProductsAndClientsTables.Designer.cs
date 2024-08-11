@@ -3,6 +3,7 @@ using System;
 using ALG.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ALG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240810212431_addProductsAndClientsTables")]
+    partial class addProductsAndClientsTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.17");
@@ -318,7 +321,7 @@ namespace ALG.Data.Migrations
             modelBuilder.Entity("ALG.Models.Product", b =>
                 {
                     b.HasOne("ALG.Models.Client", "Client")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -375,11 +378,6 @@ namespace ALG.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ALG.Models.Client", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("ALG.Models.Country", b =>

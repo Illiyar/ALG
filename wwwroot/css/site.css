@@ -20,3 +20,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.full-screen-card {
+    height: 100vh; /* Занимает всю высоту экрана */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Выравнивает карточку по верху */
+    align-items: center; /* Центрирует карточку по горизонтали */
+}
+
+.card {
+    width: 100%; /* Растягивает карточку по ширине */
+    max-width: 600px; /* Ограничивает максимальную ширину */
+    margin-top: 20px; /* Добавляет отступ сверху */
+}

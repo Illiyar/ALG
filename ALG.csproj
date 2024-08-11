@@ -10,6 +10,12 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
+    <None Remove="Views\FirstTask\" />
+    <None Remove="Models\ViewModels\" />
+    <None Remove="Views\SecondTask\" />
+    <None Remove="Views\ThirdTask\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 
@@ -21,4 +27,30 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\FirstTask\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="wwwroot\src\" />
+    <Folder Include="wwwroot\src\img\" />
+    <Folder Include="Views\SecondTask\" />
+    <Folder Include="Views\ThirdTask\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\src\" />
+    <Content Remove="wwwroot\src\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\src\img\Снимок экрана 2024-08-11 в 02.07.24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\src\img\image1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\src\img\image3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\src\img\image4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
